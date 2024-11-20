@@ -7,6 +7,8 @@ export default function ServiceDetailsChart({ filter }) {
   // const { filter } = useFilter(); // Get the filter value from context
   const [serviceData, setServiceData] = useState([]);
 
+  console.log("selectfilter", filter)
+
   useEffect(() => {
     // Make the API request based on the current filter value
     axios
@@ -21,7 +23,7 @@ export default function ServiceDetailsChart({ filter }) {
   }, [filter]); // The data will refetch when the filter changes
 
   return (
-    <Box p={1} sx={{ backgroundColor: '#f0f4f7', borderRadius: '10px', width: '90%', maxWidth: 400, border: '1px #000 solid' }}>
+    <Box p={1} sx={{ backgroundColor: '#f0f4f7', borderRadius: '10px', width: '98%', maxWidth: 800, border: '1px #000 solid' }}>
       <Typography variant="h6" align="center" gutterBottom>
         SERVICE DETAILS
       </Typography>
@@ -43,37 +45,54 @@ export default function ServiceDetailsChart({ filter }) {
               <Box
                 sx={{
                   width: `${service.data.total_completed_till_date * 2}px`,
-                  height: '8px',
+                  height: '5vh',
                   backgroundColor: '#4B0082',
-                  marginRight: '4px',
-                  borderRadius: '4px',
+                  borderTopRightRadius: '4px',
+                  borderBottomRightRadius:'4px',
+                  display:'flex',
+                  justifyContent:'center',
+                  alignItems:'center',
+                  color:'white'
                 }}
-              />
+              >
+                { service.data.total_completed_till_date ?? 0 }
+              </Box>
             )}
             {service.data.total_ongoing_till_date > 0 && (
               <Box
                 sx={{
                   width: `${service.data.total_ongoing_till_date * 2}px`,
-                  height: '8px',
+                  height: '5vh',
                   backgroundColor: '#87CEEB',
-                  marginRight: '4px',
-                  borderRadius: '4px',
+                  borderTopRightRadius: '4px',
+                  borderBottomRightRadius:'4px',
+                  display:'flex',
+                  justifyContent:'center',
+                  alignItems:'center',
+                  color:'white'
                 }}
-              />
+              >{ service.data.total_ongoing_till_date ?? 0 }
+              </Box>
             )}
             {service.data.total_pending_till_date > 0 && (
               <Box
                 sx={{
                   width: `${service.data.total_pending_till_date * 2}px`,
-                  height: '8px',
+                  height: '5vh',
                   backgroundColor: '#FF6347',
-                  borderRadius: '4px',
+                  borderTopRightRadius: '4px',
+                  borderBottomRightRadius:'4px',
+                  display:'flex',
+                  justifyContent:'center',
+                  alignItems:'center',
+                  color:'white'
                 }}
-              />
+              >{ service.data.total_pending_till_date ?? 0 }
+              </Box>
             )}
-            <Typography variant="caption" sx={{ marginLeft: '8px', color: '#FF6347' }}>
+            {/* <Typography variant="caption" sx={{ marginLeft: '8px', color: '#FF6347' }}>
               {service.data.total_pending_till_date > 0 ? service.data.total_pending_till_date : ''}
-            </Typography>
+            </Typography> */}
           </Box>
         </Box>
       ))}

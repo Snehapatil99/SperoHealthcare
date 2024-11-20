@@ -37,11 +37,10 @@ const options = {
 export default function DashboardCards() {
   return (
     <Grid container spacing={1} mt={1}>
-      <Grid item xs={4} md={12}>
-        <Card sx={{  backgroundColor: '#faebd7', border: '1px solid #000', borderRadius: '10px',
-            }}>
+      <Grid item xs={14} md={12}>
+        <Card sx={{  backgroundColor: '#faebd7', border: '1px solid #000', borderRadius: '10px', }}>
           <CardContent>
-            <Grid container spacing={1}>
+            <Grid container spacing={2}>
               {cardsData.map((card, index) => (
                 <Grid item xs={4} sm={1} md={2.4} key={index}>
                   <Card
@@ -49,7 +48,7 @@ export default function DashboardCards() {
                       backgroundColor: card.color,
                       color: '#fff',
                       borderRadius: '10px',
-                      height: '90%', // Adjusted height for compact view
+                      height: '95%', // Adjusted height for compact view
                       // display: 'flex',
                       // justifyContent: 'center',
                       // alignItems: 'center',
